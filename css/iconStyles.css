@@ -1,0 +1,35 @@
+@keyframes blueBlink {
+    0% {
+      filter: brightness(00%) hue-rotate(0deg);
+    }
+    50% {
+      filter: brightness(120%) hue-rotate(30deg);
+    }
+    100% {
+      filter: brightness(100%) hue-rotate(0deg);
+    }
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header h1 {
+    display: flex;
+    align-items: center;
+    font-family:sans-serif;
+text-shadow: 1px; 
+ }
+  
+  .header-icon {
+    animation: blueBlink 4s infinite 2s;
+    margin-right: 10px;
+  }
+  
+  .header-text {
+    animation: blueBlink 4s infinite 2s;
+  }
+  
+
+  

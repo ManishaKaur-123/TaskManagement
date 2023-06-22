@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to  Task Management - Login</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+   
+
+    <main class="main">
+        <div id="loginPage" class="page">
+           
+                <h1>Welcome to Task Management</h1>
+            
+            <h2>Login to access your Task Management account</h2>
+            <div class="input-container">
+                <input type="email" id="email" placeholder="Email" class="text-input">
+            </div>
+            <div class="input-container">
+                <input type="password" id="password" placeholder="Password" class="text-input">
+            </div>
+            <div class="button-container">
+                <button onclick="login()" class="primary-button">Login</button>
+            </div>
+            <p>Don't have an account? <a href="registration.html">Register</a></p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        function login() {
+            // Get the input values
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            // Perform login validation
+            if (email.trim() === '' || password.trim() === '') {
+                alert('Please enter email and password');
+                return;
+            }
+
+            // Retrieve registered users from local storage
+            var registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+            // Find the matching registered user
+            var registeredUser = registeredUsers.find(function(user) {
+                return user.email === email && user.password === password;
+            });
+
+            // Check if the user exists
+            if (registeredUser) {
+                var role = registeredUser.role;
+
+                // Simulate successful login for demonstration purposes
+                alert('Login successful! You have logged in as a ' + role + ' account.');
+                localStorage.setItem('loggedInUser', JSON.stringify(registeredUser));
+
+                // Redirect to dashboard page
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Invalid email or password');
+            }
+
+        }
+    </script>
+</body>
+</html>

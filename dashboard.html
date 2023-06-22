@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Management Dashboard</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/iconStyles.css" />
+    <link rel="stylesheet" href="./css/addTask.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
+    <link rel="stylesheet" href="./css/loading.css" />
+    <link rel="stylesheet" href="./css/userModal.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <style></style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>
+          <i class="fas fa-user"></i>
+          <span class="header-text">Task Management Dashboard</span>
+          <div class="left-icons">
+          <div class="profile" id="profile" onclick="openProfileModal()">
+            <i class="fas fa-user"></i>
+            <span class="profileName">Profile</span>
+          </div>
+          <div id="logout-button" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="logoutText">Logout</span>
+        </div>
+        </div>
+        </h1>
+      </div>
+
+      <div class="task-management-container">
+        <div class="task-form-container" id="task-form-container">
+          <h2>Please create new tasks and you can choose any member as an assignee.</h2>
+          <div class="form-container">
+            
+            <div class="input-container">
+              <label for="task-assignee">Assignee:</label>
+              <select id="task-assignee" name="task-assignee"></select>
+            </div>
+            <div class="input-container">
+              <label for="task-title">Title:</label>
+              <input
+                type="text"
+                id="task-title"
+                name="task-title"
+                placeholder="Enter task title"
+              />
+            </div>
+            <div class="input-container">
+              <label for="task-description">Description:</label>
+              <input
+              type="text"
+                id="task-description"
+                name="task-description"
+                placeholder="Enter task description"
+              ></input>
+            </div>
+            <div class="input-container">
+              <label for="task-estimated-time">Estimated Time (hours):</label>
+              <input
+                type="number"
+                id="task-estimated-time"
+                name="task-estimated-time"
+                min="0"
+                placeholder="Enter estimated time"
+              />
+            </div>
+            <div class="button-container">
+              <button class="primary-button" onclick="addTask()">
+                Add Task
+              </button>
+            </div>
+           
+          </div>
+          <div class="instructions">
+            <p>
+              You will be notified once the assignee starts working on the task.
+            </p>
+          </div>
+        </div>
+
+        <div class="task-cards-container">
+          <!-- <h3>Tasks created by you</h3> -->
+        </div>
+        <div class="task-management-container" id="task-management-container" >
+          <div class="task-section">
+            <h3>To Do<span class="section-count"></span></h3>
+            <div class="task-cards-container" id="todo-container" style="width: 100%;"></div>
+          </div>
+          <div class="task-section">
+            <h3>In Progress<span class="section-count"></span></h3>
+            <div class="task-cards-container" id="inprogress-container" style="width: 100%;"></div>
+          </div>
+          <div class="task-section">
+            <h3>In QA<span class="section-count"></span></h3>
+            <div class="task-cards-container" id="qa-container" style="width: 100%;"></div>
+          </div>
+          <div class="task-section">
+            <h3>Done<span class="section-count"></span></h3>
+            <div class="task-cards-container" id="done-container" style="width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Add the following HTML structure for the popup -->
+    <div class="popup" id="taskPopup">
+      <div class="popup-content">
+        
+        <h2>Task Details</h2>
+        <div class="input-container">
+          <label for="popup-title">Title:</label>
+          <input type="text" id="popup-title" readonly>
+        </div>
+        <div class="input-container">
+          <label for="popup-description">Description:</label>
+          <textarea id="popup-description" readonly></textarea>
+        </div>
+        <div class="input-container">
+          <label for="popup-estimated">Estimated Hours:</label>
+          <input type="number" id="popup-estimated" readonly>
+        </div>
+        <div class="input-container">
+          <label for="popup-log">Log Hours:</label>
+          <input type="number" id="popup-log">
+        </div>
+        <div id="popup-remaining"></div>
+        <div class="button-container">
+          <button class="primary-button" onclick="saveTask()">Save</button>
+        </div>
+        <span id="close-btn" class="close-btn" onclick="closePopup()">&times;</span>
+            </div>
+    </div>
+    <div id="profileModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeProfileModal()">&times;</span>
+        <div class="profile-header">
+          <i class="fas fa-user-circle"></i>
+          <div class="user-info">
+            <div class="user-details">
+              <h3 id="profileName"></h3>
+              <p id="profileEmail"></p>
+            </div>
+          </div>
+        </div>
+        <div id="profileDetails">
+          
+          <div class="tasks-assigned" id="tasks-assigned">
+            <p style="font-size:large"><strong>Assigned Tasks:</strong></p>
+            <ul id="assignedTasksList"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="loader-overlay">
+      <div class="loader-spinner"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.11"></script>
+
+    <script src="script.js"></script>
+    <script src="interact.js"></script>
+    <script src="taskModal.js"></script>
+    <script src="userModal.js"></script>
+  </body>
+</html>

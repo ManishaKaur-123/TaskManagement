@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jira Task Management - Registration</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+    
+
+    <main class="main">
+        <div id="registrationPage" class="page">
+            <h1>Task Management</h1>
+            <h2>No problem! We are here to help you register</h2>
+            <div class="input-container">
+                <input type="text" id="name" placeholder="Name" class="text-input">
+            </div>
+            <div class="input-container">
+                <input type="email" id="email" placeholder="Email" class="text-input">
+            </div>
+            <div class="input-container">
+                <input type="password" id="password" placeholder="Password" class="text-input">
+            </div>
+            <div class="input-container">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" class="text-input">
+            </div>
+            <div class="button-container">
+                <button onclick="register()" class="primary-button">Register</button>
+            </div>
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        function register() {
+            // Get the input values
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Perform registration validation
+            if (name.trim() === '' || email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            // Create a new user object
+            var user = {
+                name: name,
+                email: email,
+                password: password,
+                role: email.endsWith('@admin.ca') ? 'admin' : 'member'
+            };
+
+            // Retrieve existing registered users from local storage or create an empty array
+            var registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+            // Check if the user with the same email already exists
+            var existingUser = registeredUsers.find(function(u) {
+                return u.email === email;
+            });
+
+            if (existingUser) {
+                alert('User with the same email already exists');
+                return;
+            }
+
+            // Add the new user to the registered users array
+            registeredUsers.push(user);
+
+            // Store the updated registered users array in local storage
+            localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+
+            alert('Registration successful! Please login with your credentials.');
+
+            // Redirect to login page
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jira Task Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Jira Task Management</h1>
+    </header>
+
+    <main>
+        <div id="taskManagementPage" class="page hidden">
+            <section id="taskForm">
+                <h2>Create Task</h2>
+                <input type="text" id="taskId" placeholder="Task ID">
+                <input type="text" id="taskName" placeholder="Task Name">
+                <textarea id="taskDescription" placeholder="Task Description"></textarea>
+                <input type="date" id="taskStartDate">
+                <input type="date" id="taskEndDate">
+                <button onclick="createTask()">Create Task</button>
+            </section>
+
+            <section id="assignForm">
+                <h2>Assign Member</h2>
+                <input type="email" id="memberEmail" placeholder="Member Email">
+                <input type="number" id="hourlyRate" placeholder="Hourly Rate">
+                <button onclick="assignMember()">Assign Member</button>
+            </section>
+
+            <section id="completeForm">
+                <h2>Complete Task</h2>
+                <input type="datetime-local" id="completionDate" placeholder="Completion Date">
+                <input type="number" id="hoursWorked" placeholder="Hours Worked">
+                <button onclick="completeTask()">Complete Task</button>
+            </section>
+
+            <section id="taskList">
+                <h2>Task List</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Task ID</th>
+                            <th>Task Name</th>
+                            <th>Task Description</th>
+                            <th>Task Start Date</th>
+                            <th>Task End Date</th>
+                            <th>Status</th>
+                            <th>Assigned Members</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskTableBody"></tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

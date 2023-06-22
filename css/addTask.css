@@ -1,0 +1,120 @@
+.form-container {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%; /* Adjust the maximum width as needed */
+  background-color: white;
+  padding: 20px;
+  border: 0.5px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a box shadow effect */
+}
+
+h2 {
+  font-size: 18px; /* Adjust the font size as needed */
+  color: #333;
+  font-weight: 300;
+  font-family: Georgia, "Times New Roman", Times, serif; /* Change the text color */
+  align-self: center;
+}
+
+.form-container .input-container {
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 10px;
+  color: #225d70;
+}
+
+.form-container input {
+  align-self: center;
+  margin-right: 10px;
+  width: 100% -10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.form-container textarea,
+.form-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-container textarea {
+  resize: vertical;
+}
+
+.form-container .button-container {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.form-container .primary-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.task-form-container {
+  width: 60%;
+  margin-right: 20px;
+  background-color: #e8f4f8;
+  height: 600px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.instructions {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.instructions p {
+  font-size: 14px;
+  color: lightslategrey;
+  font-family: sans-serif; /* Change the text color */
+  font-weight: bold;
+}
+
+.input-container input[type="text"],
+.input-container input[type="number"],
+.input-container textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.status-badge {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  
+  .status-badge.to-do {
+    background-color: #ff5252; /* Red */
+    color: #fff;
+  }
+  
+  .status-badge.in-progress {
+    background-color: #ffc107; /* Yellow */
+    color: #000;
+  }
+  
+  .status-badge.done {
+    background-color: #4caf50; /* Green */
+    color: #fff;
+  }
